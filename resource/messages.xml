@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  This file is part of the DITA-OT Splash Screen Plug-in project.
+  See the accompanying LICENSE file for applicable licenses.
+-->
+<messages>
+  <message id="CATS001I" type="INFO">
+    <reason>Requesting image from the Cats API.</reason>
+    <response>For more information see: http://thecatapi.com/docs.html</response>
+  </message>
+  <message id="XKCD001I" type="INFO">
+    <reason>Requesting image from XKCD API.</reason>
+    <response>For more information see: https://xkcd.com/json.html</response>
+  </message>
+</messages>

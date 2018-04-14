@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+  		This file is part of the DITA-OT Splash Screen Plug-in project.
+  		See the accompanying LICENSE file for applicable licenses.
+	-->
+<project name="fox.jason.splash.splash" default="run-splash">
+	<!--
+		Ant target to allow direct invocation of the splash screen, this means we can use
+		an alternative classpath including ANT swing and override the java.awt.headless attribute.
+	-->
+	<target name="run-splash">
+		<splash imageurl="${splash.image}" displaytext="${splash.title}" showduration="${splash.duration}" />
+	</target>
+</project>
