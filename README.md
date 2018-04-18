@@ -1,6 +1,9 @@
 Splash Screen for DITA-OT
 =========================
 
+[![Build Status](https://travis-ci.org/jason-fox/fox.jason.splash.svg?branch=master)](https://travis-ci.org/jason-fox/fox.jason.splash)
+[![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
 Copyright (c) 2018 Jason Fox
 
 See the [LICENSE](LICENSE) file in the root of this project for license details.
