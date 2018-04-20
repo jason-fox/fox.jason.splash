@@ -10,4 +10,4 @@ before_script:
   - dita-ot/bin/dita --install https://github.com/jason-fox/fox.jason.unit-test/archive/master.zip
   - dita-ot/bin/dita --install fox.jason.splash.zip 
 script:
-  - dita-ot/bin/dita --input dita-ot/plugins/fox.jason.splash/test -f unit-test -v
+  - dita-ot/bin/dita --input dita-ot/plugins/fox.jason.splash -f unit-test -v

@@ -19,7 +19,7 @@
 	</target>
 
 	<!--
-		Make an HTTP request to the cat API - check we are online and can obtain an image.
+		Make an HTTP request to the Cats API - check we are online and can obtain an image.
 		For more information see: http://thecatapi.com/docs.html
 	-->
 	<target name="cats.init">
@@ -57,7 +57,7 @@
 	</target>
 
 	<!--
-			Make an HTTP request to the xkcd API - check we are online and can obtain an image.
+			Make an HTTP request to the XKCD API - check we are online and can obtain an image.
 			For more information see: https://xkcd.com/json.html
 	-->
 	<target name="xkcd.init">

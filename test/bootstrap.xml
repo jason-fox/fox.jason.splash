@@ -5,8 +5,8 @@
 		Local definitions for dita.dir and test.root.dir are required to run
 		individual tests locally.
 	-->	
-	<dirname property="test.root.dir" file="${ant.file.unit-test.bootstrap}" />
-	<property name="dita.dir" location="${test.root.dir}/../../.."/> 
+	<dirname property="test.root.dir" file="${ant.file.unit-test.bootstrap}/.." />
+	<property name="dita.dir" location="${test.root.dir}/../.."/> 
 	<!-- 
 		Load the unit testing library to make the macros available to the unit-tests 
 	-->
