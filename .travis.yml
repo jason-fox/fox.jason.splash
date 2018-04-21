@@ -2,7 +2,6 @@ language: java
 jdk:
   - oraclejdk8
 env:
-  - DITA_OT=2.5.4
   - DITA_OT=3.0.3
 before_script:
   - zip -r fox.jason.splash.zip . -x *.zip* *.git/* *temp/* *out/*
