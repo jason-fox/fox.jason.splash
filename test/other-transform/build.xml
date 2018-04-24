@@ -6,6 +6,6 @@
 	</description>
 	<target name="unit-test">
 		<exec-transtype transtype="pdf"/>
-		<contains-text expected="[CATS001I][INFO] Requesting image from the Cats API"/>
+		<contains-text expected="Requesting image from the Cats API."/>
 	</target>
 </project>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!--
   		This file is part of the DITA-OT Splash Screen Plug-in project.
   		See the accompanying LICENSE file for applicable licenses.
-	--><project name="fox.jason.splash">
+	--><project xmlns:if="ant:if" xmlns:unless="ant:unless" name="fox.jason.splash">
 
 	<!--
 		Set default values for the parameters passed into this plugin.
@@ -16,6 +16,22 @@
     		 <pathelement location="${dita.dir}/lib/ant.jar"/>
 		</path>
 		<tempfile destdir="${dita.temp.dir}" property="splash.info.file" deleteonexit="true"/>
+
+		<condition property="otversion.legacy">
+  			<matches pattern="^[1|2].*" string="${otversion}"/>
+		</condition>
+
+		<macrodef name="diagnostic-message">
+			<attribute name="id"/>
+			<attribute name="message"/>
+			<attribute name="level"/>
+			<sequential>
+				<dita-ot-echo id="@{id}" unless:set="otversion.legacy">
+					<param name="1" value="@{message}"/>
+				</dita-ot-echo>
+				<echo taskname="@{id}" level="@{level}" message="@{message}" unless:set="otversion.legacy"/>
+			</sequential>
+		</macrodef>
 	</target>
 
 	<!--
@@ -23,7 +39,7 @@
 		For more information see: http://thecatapi.com/docs.html
 	-->
 	<target name="cats.init">
-		<dita-ot-echo id="CATS001I"/>
+		<diagnostic-message id="CATS001I" message="Requesting image from the Cats API." level="info"/>
 		<get retries="1" src="http://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med" dest="${splash.info.file}" ignoreerrors="true"/>
 
 		<condition property="splash.exists" value="true">
@@ -61,7 +77,7 @@
 			For more information see: https://xkcd.com/json.html
 	-->
 	<target name="xkcd.init">
-		<dita-ot-echo id="XKCD001I"/>		
+		<diagnostic-message id="XKCD001I" message="Requesting image from XKCD API." level="info"/>	
 		<get retries="1" src="https://xkcd.com/info.0.json" dest="${splash.info.file}" ignoreerrors="true"/>
 
 		<condition property="splash.exists" value="true">

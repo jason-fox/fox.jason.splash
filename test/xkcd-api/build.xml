@@ -6,6 +6,6 @@
 	</description>
 	<target name="unit-test">
 		<exec-transtype transtype="xkcd"/>
-		<contains-text expected="[XKCD001I][INFO] Requesting image from XKCD API."/>
+		<contains-text expected="Requesting image from XKCD API."/>
 	</target>
 </project>

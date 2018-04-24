@@ -5,11 +5,11 @@
 -->
 <messages>
   <message id="CATS001I" type="INFO">
-    <reason>Requesting image from the Cats API.</reason>
+    <reason>%1</reason>
     <response>For more information see: http://thecatapi.com/docs.html</response>
   </message>
   <message id="XKCD001I" type="INFO">
-    <reason>Requesting image from XKCD API.</reason>
+    <reason>%1</reason>
     <response>For more information see: https://xkcd.com/json.html</response>
   </message>
 </messages>

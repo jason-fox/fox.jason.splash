@@ -19,6 +19,7 @@
 	<feature extension="dita.conductor.transtype.check" value="cats"/>
 	<transtype name="cats" abstract="false" desc="Display a random cat picture as a splash screen"/>
 
-	<feature extension="ant.import" file="build_dita2splash.xml"/>
+	<!--feature extension="ant.import" file="build_dita2splash.xml"/-->
+	<feature extension="dita.conductor.target.relative" file="conductor.xml"/>
 	<template file="build_dita2splash_template.xml"/>
 </plugin>
