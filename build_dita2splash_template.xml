@@ -23,7 +23,7 @@
   			<matches pattern="^[1|2].*" string="${otversion}"/>
 		</condition>
 
-		<macrodef name="diagnostic-message">
+		<macrodef name="splash-log">
 			<attribute name="id"/>
 			<attribute name="message"/>
 			<attribute name="level"/>
@@ -41,7 +41,7 @@
 		For more information see: http://thecatapi.com/docs.html
 	-->
 	<target name="cats.init">
-		<diagnostic-message id="CATS001I"  message="Requesting image from the Cats API." level="info"/>
+		<splash-log id="CATS001I"  message="Requesting image from the Cats API." level="info"/>
 		<get retries="1" src="http://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med" dest="${splash.info.file}" ignoreerrors="true" />
 
 		<condition property="splash.exists" value="true">
@@ -79,7 +79,7 @@
 			For more information see: https://xkcd.com/json.html
 	-->
 	<target name="xkcd.init">
-		<diagnostic-message id="XKCD001I"  message="Requesting image from XKCD API." level="info"/>	
+		<splash-log id="XKCD001I"  message="Requesting image from XKCD API." level="info"/>	
 		<get retries="1" src="https://xkcd.com/info.0.json" dest="${splash.info.file}" ignoreerrors="true" />
 
 		<condition property="splash.exists" value="true">
