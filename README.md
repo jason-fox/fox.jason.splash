@@ -104,6 +104,4 @@ License
 
 The Program includes the following additional software component which was obtained under license:
 
-#### Apache 2.0 license:
-
-* Ant-Swing.jar - https://ant.apache.org/ 
+* Ant-Swing.jar - https://ant.apache.org/ - **Apache 2.0 license**
