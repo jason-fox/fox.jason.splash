@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<!--
-  		This file is part of the DITA-OT Splash Screen Plug-in project.
-  		See the accompanying LICENSE file for applicable licenses.
-	-->
-<project name="fox.jason.splash"  xmlns:if="ant:if" xmlns:unless="ant:unless">
-
+<!--
+  	This file is part of the DITA-OT Splash Screen Plug-in project.
+  	See the accompanying LICENSE file for applicable licenses.
+-->
+<project name="fox.jason.splash" xmlns:if="ant:if" xmlns:unless="ant:unless">
 	<!--
 		Set default values for the parameters passed into this plugin.
 	-->
-	<target name="splash.init" depends="build-init">
-
+	<target depends="build-init" name="splash.init">
 		<path id="splash.classpath">
-    		<fileset dir="${dita.plugin.fox.jason.splash.dir}/lib">
-        		<include name="*.jar" />
-    		</fileset>
-    		 <pathelement location="${dita.dir}/lib/ant-launcher.jar"/>
-    		 <pathelement location="${dita.dir}/lib/ant.jar"/>
+			<fileset dir="${dita.plugin.fox.jason.splash.dir}/lib">
+				<include name="*.jar"/>
+			</fileset>
+			<pathelement location="${dita.dir}/lib/ant-launcher.jar"/>
+			<pathelement location="${dita.dir}/lib/ant.jar"/>
 		</path>
-		<tempfile destdir="${dita.temp.dir}" property="splash.info.file" deleteonexit="true"/>
-
+		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="splash.info.file"/>
 		<condition property="otversion.legacy">
-  			<matches pattern="^[1|2].*" string="${otversion}"/>
+			<matches pattern="^[1|2].*" string="${otversion}"/>
 		</condition>
-
 		<macrodef name="splash-log">
 			<attribute name="id"/>
 			<attribute name="message"/>
@@ -31,23 +27,21 @@
 				<dita-ot-echo id="@{id}" unless:set="otversion.legacy">
 					<param name="1" value="@{message}"/>
 				</dita-ot-echo>
-				<echo taskname="@{id}" level="@{level}" message="@{message}" if:set="otversion.legacy"/>
+				<echo if:set="otversion.legacy" level="@{level}" message="@{message}" taskname="@{id}"/>
 			</sequential>
 		</macrodef>
 	</target>
-
 	<!--
 		Make an HTTP request to the Cats API - check we are online and can obtain an image.
 		For more information see: http://thecatapi.com/docs.html
 	-->
 	<target name="cats.init">
-		<splash-log id="CATS001I"  message="Requesting image from the Cats API." level="info"/>
-		<get retries="1" src="http://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med" dest="${splash.info.file}" ignoreerrors="true" />
-
+		<splash-log id="CATS001I" level="info" message="Requesting image from the Cats API."/>
+		<get dest="${splash.info.file}" ignoreerrors="true" retries="1" src="http://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med"/>
 		<condition property="splash.exists" value="true">
 			<and>
 				<available file="${splash.info.file}"/>
-				<length file="${splash.info.file}" when="gt" length="0"/>
+				<length file="${splash.info.file}" length="0" when="gt"/>
 			</and>
 		</condition>
 	</target>
@@ -57,8 +51,8 @@
 
 		Important: To protect yourself from Copyright issues, when you show an Image you MUST have it linked to; or clearly show the 'source_url' the value of the XML, or leave the link in-place with HTML format. This then links back to the image on thecatapi.com, where we then link to where we do the same to the last known Copyright holder.
 	-->
-	<target name="cats.parse" if="splash.exists" >
-		<loadfile property="cats.info" srcfile="${splash.info.file}" failonerror="true"/>
+	<target if="splash.exists" name="cats.parse">
+		<loadfile failonerror="true" property="cats.info" srcfile="${splash.info.file}"/>
 		<script language="javascript">
 			<![CDATA[
 		    var input = project.getProperty("cats.info");
@@ -73,24 +67,20 @@
 		    ]]>
 		</script>
 	</target>
-
 	<!--
 			Make an HTTP request to the XKCD API - check we are online and can obtain an image.
 			For more information see: https://xkcd.com/json.html
 	-->
 	<target name="xkcd.init">
-		<splash-log id="XKCD001I"  message="Requesting image from XKCD API." level="info"/>	
-		<get retries="1" src="https://xkcd.com/info.0.json" dest="${splash.info.file}" ignoreerrors="true" />
-
+		<splash-log id="XKCD001I" level="info" message="Requesting image from XKCD API."/>
+		<get dest="${splash.info.file}" ignoreerrors="true" retries="1" src="https://xkcd.com/info.0.json"/>
 		<condition property="splash.exists" value="true">
 			<and>
 				<available file="${splash.info.file}"/>
-				<length file="${splash.info.file}" when="gt" length="0"/>
+				<length file="${splash.info.file}" length="0" when="gt"/>
 			</and>
 		</condition>
 	</target>
-
-
 	<!--
 		Select a random image using the repsonse received previously and requests a
 		random comic. Extracts the image URL and title
@@ -103,8 +93,8 @@
 		Since some early versions of Rhino do not expose the NativeJSON class as public,
 		simple string manipulation has been used to extract the necessary JSON elements.
 	-->
-	<target name="xkcd.parse" if="splash.exists" >
-		<loadfile property="xkcd.latest" srcfile="${splash.info.file}" failonerror="true"/>
+	<target if="splash.exists" name="xkcd.parse">
+		<loadfile failonerror="true" property="xkcd.latest" srcfile="${splash.info.file}"/>
 		<script language="javascript">
 			<![CDATA[
 		    var input = project.getProperty("xkcd.latest");
@@ -114,9 +104,9 @@
 		    project.setProperty("num",  Math.floor((Math.random() * input.substring(pos + 6, len)) + 1));
 		    ]]>
 		</script>
-		<tempfile  destdir="${dita.temp.dir}" property="xkcd.json.file" deleteonexit="true"/>
-		<get retries="1" src="https://xkcd.com/${num}/info.0.json" dest="${xkcd.json.file}" ignoreerrors="true" />
-		<loadfile property="xkcd.info" srcfile="${xkcd.json.file}" failonerror="true"/>
+		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="xkcd.json.file"/>
+		<get dest="${xkcd.json.file}" ignoreerrors="true" retries="1" src="https://xkcd.com/${num}/info.0.json"/>
+		<loadfile failonerror="true" property="xkcd.info" srcfile="${xkcd.json.file}"/>
 		<script language="javascript">
 			<![CDATA[
 		    var input = project.getProperty("xkcd.info");
@@ -130,12 +120,11 @@
 		    ]]>
 		</script>
 	</target>
-
 	<!--
 		Invoke the splash screen with the given parameters.
 	-->
-	<target name="splash" if="splash.exists" >
-		<java classname="org.apache.tools.ant.launch.Launcher" fork="true" classpathref="splash.classpath" spawn="true">
+	<target if="splash.exists" name="splash">
+		<java classname="org.apache.tools.ant.launch.Launcher" classpathref="splash.classpath" fork="true" spawn="true">
 			<arg value="-buildfile"/>
 			<arg value="${dita.plugin.fox.jason.splash.dir}/run-splash.xml"/>
 			<arg value="-Dsplash.image=${splash.image.url}"/>
@@ -143,16 +132,14 @@
 			<arg value="-Dsplash.duration=20000"/>
 		</java>
 	</target>
-
 	<!--
 		Targets to be used when chaining the splash plugin from other plug-ins.
 	-->
-	<target name="xkcd.splash" depends="splash.init,xkcd.init,xkcd.parse,splash"/>
-	<target name="cats.splash" depends="splash.init,cats.init,cats.parse,splash"/>
-
+	<target depends="splash.init,xkcd.init,xkcd.parse,splash" name="xkcd.splash"/>
+	<target depends="splash.init,cats.init,cats.parse,splash" name="cats.splash"/>
 	<!--
 		Main targets executed if you directly call this plugin from Ant or Java
 	-->
-	<target name="dita2xkcd"  depends="xkcd.splash"/>
-	<target name="dita2cats"  depends="cats.splash"/>
+	<target depends="xkcd.splash" name="dita2xkcd"/>
+	<target depends="cats.splash" name="dita2cats"/>
 </project>

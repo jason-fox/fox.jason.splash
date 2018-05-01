@@ -8,17 +8,13 @@
 		Define package details.
 	-->
 	<feature extension="package.version" value="1.0.0"/>
-
 	<!--feature extension="depend.preprocess.pre" value="display-xkcd"/-->
 	<feature extension="depend.preprocess.pre" value="cats.splash"/>
-
 	<feature extension="dita.xsl.messages" file="resource/messages.xml"/>
 	<feature extension="dita.conductor.transtype.check" value="xkcd"/>
-	<transtype name="xkcd" abstract="false" desc="Display a random xkcd comic as a splash screen"/>
-
+	<transtype abstract="false" desc="Display a random xkcd comic as a splash screen" name="xkcd"/>
 	<feature extension="dita.conductor.transtype.check" value="cats"/>
-	<transtype name="cats" abstract="false" desc="Display a random cat picture as a splash screen"/>
-
+	<transtype abstract="false" desc="Display a random cat picture as a splash screen" name="cats"/>
 	<!--feature extension="ant.import" file="build_dita2splash.xml"/-->
 	<feature extension="dita.conductor.target.relative" file="conductor.xml"/>
 	<template file="build_dita2splash_template.xml"/>
