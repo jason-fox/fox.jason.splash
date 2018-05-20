@@ -1,11 +1,9 @@
 site_name: Splash Screen for DITA-OT
 
-repo_url: https://github.com/example/repository/
+repo_url: https://jason-fox/fox.jason.splash.git
 repo_name: GitHub
 
-docs_dir: /
-
 pages:
-    -  Home: README.md
+    -  Home: index.md
 
 theme: readthedocs
