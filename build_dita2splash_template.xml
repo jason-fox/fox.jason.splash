@@ -37,7 +37,7 @@
 	-->
 	<target name="cats.init">
 		<splash-log id="CATS001I" level="info" message="Requesting image from the Cats API."/>
-		<get dest="${splash.info.file}" ignoreerrors="true" retries="1" src="http://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med"/>
+		<get dest="${splash.info.file}" ignoreerrors="true" retries="1" src="https://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med"/>
 		<condition property="splash.exists" value="true">
 			<and>
 				<available file="${splash.info.file}"/>
