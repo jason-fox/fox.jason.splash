@@ -1,7 +1,7 @@
 Splash Screen for DITA-OT
 =========================
 
-[![license](https://img.shields.io/badge/jason-fox/fox.jason.splash.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![license](https://img.shields.io/github/license/jason-fox/fox.jason.splash.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![DITA-OT 3.2](https://img.shields.io/badge/DITA--OT-3.2-blue.svg)](http://www.dita-ot.org/3.2/)
 [![DITA-OT 2.5](https://img.shields.io/badge/DITA--OT-2.5-green.svg)](http://www.dita-ot.org/2.5/)
 <br/>
