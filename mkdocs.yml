@@ -9,3 +9,4 @@ pages:
     - 'Usage' : 'usage.md'
 
 theme: readthedocs
+extra_css: ["https://jason-fox.github.io/fox.jason.splash/dita.css"]
