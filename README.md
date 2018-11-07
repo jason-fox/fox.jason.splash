@@ -1,12 +1,14 @@
 Splash Screen for DITA-OT
 =========================
 
-[![DITA-OT 3.1](https://img.shields.io/badge/DITA--OT-3.1-blue.svg)](http://www.dita-ot.org/3.1/)
+[![license](https://img.shields.io/badge/jason-fox/fox.jason.splash.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![DITA-OT 3.2](https://img.shields.io/badge/DITA--OT-3.2-blue.svg)](http://www.dita-ot.org/3.2/)
 [![DITA-OT 2.5](https://img.shields.io/badge/DITA--OT-2.5-green.svg)](http://www.dita-ot.org/2.5/)
+<br/>
 [![Build Status](https://travis-ci.org/jason-fox/fox.jason.splash.svg?branch=master)](https://travis-ci.org/jason-fox/fox.jason.splash)
 [![Coverage Status](https://coveralls.io/repos/github/jason-fox/fox.jason.splash/badge.svg?branch=master)](https://coveralls.io/github/jason-fox/fox.jason.splash?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/splash-screen-plug-in-for-dita-ot/badge/?version=latest)](https://splash-screen-plug-in-for-dita-ot.readthedocs.io/en/latest/?badge=latest)
-[![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
 
 
 This simple DITA-OT plug-in automatically displays a random cat picture or xkcd comic strip as a splash screen whilst waiting for a build job to complete.
