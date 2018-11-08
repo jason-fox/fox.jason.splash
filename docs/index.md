@@ -1,3 +1,5 @@
+<h1>Splash Screen for DITA-OT</h1>
+
 This simple DITA-OT plug-in automatically displays a random cat picture from the [Cat API](http://thecatapi.com/) or an [xkcd](https://xkcd.com/) comic strip as a splash screen whilst waiting for a build job to complete.
 
 

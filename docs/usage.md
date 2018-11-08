@@ -1,3 +1,5 @@
+<h1>Usage</h1>
+
 Automatically displaying a splash screen when running a build job
 ------------------------------------------------------------------
 
