@@ -1,7 +1,3 @@
-
-Usage
-=====
-
 Automatically displaying a splash screen when running a build job
 ------------------------------------------------------------------
 
