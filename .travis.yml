@@ -2,7 +2,7 @@ language: java
 jdk:
   - oraclejdk8
 env:
-  - DITA_OT=3.2
+  - DITA_OT=3.3
   - DITA_OT=2.5.4
 
 before_install:
@@ -22,5 +22,5 @@ script:
   - dita-ot-$DITA_OT/bin/dita --input dita-ot-$DITA_OT/plugins/fox.jason.splash -f unit-test --output . -v
 
 after_success:
-  - cp dita-ot-$DITA_OT/plugins/fox.jason.unit-test/resource/pom.xml pom.xml
-  - mvn clean org.eluder.coveralls:coveralls-maven-plugin:report   
+  - test $DITA_OT = "3.3" && cp dita-ot-$DITA_OT/plugins/fox.jason.unit-test/resource/pom.xml pom.xml
+  - test $DITA_OT = "3.3" && mvn clean org.eluder.coveralls:coveralls-maven-plugin:report   
