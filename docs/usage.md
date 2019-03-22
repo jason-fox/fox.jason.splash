@@ -1,16 +1,15 @@
 <h1>Usage</h1>
 
-Automatically displaying a splash screen when running a build job
-------------------------------------------------------------------
+## Automatically displaying a splash screen when running a build job
 
-The plugin is pre-configured to run as part of the `depend.preprocess.pre` build step. Running any ordinary build job will display a random cat photo.
+The plugin is pre-configured to run as part of the `depend.preprocess.pre` build step. Running any ordinary build job
+will display a random cat photo.
 
 ```bash
 PATH_TO_DITA_OT/bin/dita -f pdf -o out -i document.ditamap
 ```
 
-Invoking the splash screen directly from the Command line
----------------------------------------------------------
+## Invoking the splash screen directly from the Command line
 
 Like any other transform, when invoked directly, the splash screen requires an input document
 
