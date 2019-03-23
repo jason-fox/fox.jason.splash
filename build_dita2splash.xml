@@ -14,27 +14,16 @@
 			<pathelement location="${dita.dir}/lib/ant.jar"/>
 		</path>
 		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="splash.info.file"/>
-		<condition property="otversion.legacy">
-			<matches pattern="^[1|2].*" string="${otversion}"/>
-		</condition>
-		<macrodef name="splash-log">
-			<attribute name="id"/>
-			<attribute name="message"/>
-			<attribute name="level"/>
-			<sequential>
-				<dita-ot-echo id="@{id}" unless:set="otversion.legacy">
-					<param name="1" value="@{message}"/>
-				</dita-ot-echo>
-				<echo if:set="otversion.legacy" level="@{level}" message="@{message}" taskname="@{id}"/>
-			</sequential>
-		</macrodef>
 	</target>
 	<!--
 		Make an HTTP request to the Cats API - check we are online and can obtain an image.
 		For more information see: http://thecatapi.com/docs.html
 	-->
 	<target name="cats.init">
-		<splash-log id="CATS001I" level="info" message="Requesting image from the Cats API."/>
+		<dita-ot-echo id="CATS001I" unless:set="otversion.legacy">
+			<param name="1" value="Requesting image from the Cats API."/>
+		</dita-ot-echo>
+
 		<get dest="${splash.info.file}" ignoreerrors="true" retries="1" src="https://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med"/>
 		<condition property="splash.exists" value="true">
 			<and>
@@ -70,7 +59,9 @@
 			For more information see: https://xkcd.com/json.html
 	-->
 	<target name="xkcd.init">
-		<splash-log id="XKCD001I" level="info" message="Requesting image from XKCD API."/>
+		<dita-ot-echo id="XKCD001I">
+			<param name="1" value="Requesting image from XKCD API."/>
+		</dita-ot-echo>
 		<get dest="${splash.info.file}" ignoreerrors="true" retries="1" src="https://xkcd.com/info.0.json"/>
 		<condition property="splash.exists" value="true">
 			<and>

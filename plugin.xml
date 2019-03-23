@@ -3,11 +3,7 @@
   This file is part of the DITA-OT Splash Screen Plug-in project.
   See the accompanying LICENSE file for applicable licenses.
 -->
-<plugin id="fox.jason.splash">
-	<!--
-		Define package details.
-	-->
-	<feature extension="package.version" value="1.0.2"/>
+<plugin id="fox.jason.splash" version="2.0.0">
 	<!--feature extension="depend.preprocess.pre" value="display-xkcd"/-->
 	<feature extension="depend.preprocess.pre" value="cats.splash"/>
 	<feature extension="dita.xsl.messages" file="resource/messages.xml"/>
@@ -15,7 +11,5 @@
 	<transtype abstract="false" desc="Display a random xkcd comic as a splash screen" name="xkcd"/>
 	<feature extension="dita.conductor.transtype.check" value="cats"/>
 	<transtype abstract="false" desc="Display a random cat picture as a splash screen" name="cats"/>
-	<!--feature extension="ant.import" file="build_dita2splash.xml"/-->
-	<feature extension="dita.conductor.target.relative" file="conductor.xml"/>
-	<template file="build_dita2splash_template.xml"/>
+	<feature extension="ant.import" file="build_dita2splash.xml"/>
 </plugin>
