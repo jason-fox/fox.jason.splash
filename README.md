@@ -1,8 +1,7 @@
-Splash Screen for DITA-OT
-=========================
+# Splash Screen for DITA-OT
 
 [![license](https://img.shields.io/github/license/jason-fox/fox.jason.splash.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![DITA-OT 3.2](https://img.shields.io/badge/DITA--OT-3.2-blue.svg)](http://www.dita-ot.org/3.2/)
+[![DITA-OT 3.3](https://img.shields.io/badge/DITA--OT-3.3-blue.svg)](http://www.dita-ot.org/3.3/)
 [![DITA-OT 2.5](https://img.shields.io/badge/DITA--OT-2.5-green.svg)](http://www.dita-ot.org/2.5/)
 <br/>
 [![Build Status](https://travis-ci.org/jason-fox/fox.jason.splash.svg?branch=master)](https://travis-ci.org/jason-fox/fox.jason.splash)
@@ -14,69 +13,65 @@ Splash Screen for DITA-OT
 This simple DITA-OT plug-in automatically displays a random cat picture or xkcd comic strip as a splash screen whilst waiting for a build job to complete.
 
 
-Table of Contents
-=================
+# Table of Contents
 
-- [Install](#install)
-  * [Installing DITA-OT](#installing-dita-ot)
-  * [Installing the Plug-in](#installing-the-plug-in)
+-  [Install](#install)
+  -  [Installing DITA-OT](#installing-dita-ot)
+  -  [Installing the Plug-in](#installing-the-plug-in)
 - [Usage](#usage)
-  * [Automatically displaying a splash screen when running a build job](#automatically-displaying-a-splash-screen-when-running-a-build-job)
-  * [Invoking the splash screen directly from the Command line](#invoking-the-splash-screen-directly-from-the-command-line)
-    + [Displaying a random Cat Photo](#displaying-a-random-cat-photo)
-    + [Displaying a random XKCD Comic Strip](#displaying-a-random-xkcd-comic-strip)
+  -  [Automatically displaying a splash screen when running a build job](#automatically-displaying-a-splash-screen-when-running-a-build-job)
+  -  [Invoking the splash screen directly from the Command line](#invoking-the-splash-screen-directly-from-the-command-line)
+     -  [Displaying a random Cat Photo](#displaying-a-random-cat-photo)
+     -  [Displaying a random XKCD Comic Strip](#displaying-a-random-xkcd-comic-strip)
 - [Contribute](#contribute)
 - [License](#license)
 
 
-Install
-=======
+# Install
 
-The splash screen plug-in has been tested against [DITA-OT 3.0.x](http://www.dita-ot.org/download). It is recommended that you upgrade to the latest version. The splash screen plug-in relies on the use of ANT to obtain and display the splash screen image. ANT 1.9+ is recommended. Older versions of the `<get>` task may fail or timeout when requesting HTTPS images. 
+The splash screen plug-in has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). It is recommended that you upgrade to the latest version. The splash screen plug-in relies on the use of ANT to obtain and display the splash screen image. ANT 1.9+ is recommended. Older versions of the `<get>` task may fail or timeout when requesting HTTPS images. 
 
-Installing DITA-OT
-------------------
+## Installing DITA-OT
 
 The DITA-OT Splash Screen is a plug-in for the DITA Open Toolkit.
 
--  Install the DITA-OT distribution JAR file dependencies by running `gradle install` from your clone of the [DITA-OT repository](https://github.com/dita-ot/dita-ot).
+-   Full installation instructions for downloading DITA-OT can be found
+    [here](https://www.dita-ot.org/3.3/topics/installing-client.html).
 
-The required dependencies are installed to a local Maven repository in your home directory under `.m2/repository/org/dita-ot/dost/`.
+    1.  Download the `dita-ot-3.3.zip` package from the project website at
+        [dita-ot.org/download](https://www.dita-ot.org/download)
+    2.  Extract the contents of the package to the directory where you want to install DITA-OT.
+    3.  **Optional**: Add the absolute path for the `bin` directory to the _PATH_ system variable. This defines the
+        necessary environment variable to run the `dita` command from the command line.
 
--  Run the Gradle distribution task to generate the plug-in distribution package:
-
-```bash
-./gradlew dist
+```console
+curl -LO https://github.com/dita-ot/dita-ot/releases/download/3.3/dita-ot-3.3.zip
+unzip -q dita-ot-3.3.zip
+rm dita-ot-3.3.zip
 ```
 
-The distribution ZIP file is generated under `build/distributions`.
+## Installing the Plug-in
 
-Installing the Plug-in
-----------------------
+-   Run the plug-in installation command:
 
--  Run the plug-in installation command:
-
-```bash
-dita -install https://github.com/jason-fox/fox.jason.splash/archive/v1.0.0.zip
+```console
+dita -install https://github.com/jason-fox/fox.jason.splash/archive/master.zip
 ```
 
 The `dita` command line tool requires no additional configuration.
 
 
-Usage
-=====
+# Usage
 
-Automatically displaying a splash screen when running a build job
-------------------------------------------------------------------
+## Automatically displaying a splash screen when running a build job
 
 The plugin is pre-configured to run as part of the `depend.preprocess.pre` build step. Running any ordinary build job will display a random cat photo.
 
-```bash
+```console
 PATH_TO_DITA_OT/bin/dita -f pdf -o out -i document.ditamap
 ```
 
-Invoking the splash screen directly from the Command line
----------------------------------------------------------
+## Invoking the splash screen directly from the Command line
 
 Like any other transform, when invoked directly, the splash screen requires an input document
 
@@ -84,7 +79,7 @@ Like any other transform, when invoked directly, the splash screen requires an i
 
 To display a random photo from the [Cat API](https://thecatapi.com/), use the `cats` transform.
 
-```bash
+```console
 PATH_TO_DITA_OT/bin/dita -f cats -i document.ditamap
 ```
 
@@ -92,17 +87,15 @@ PATH_TO_DITA_OT/bin/dita -f cats -i document.ditamap
 
 To display a random XKCD comic strip from [xkcd.com](https://xkcd.com/), use the `xkcd` transform.
 
-```bash
+```console
 PATH_TO_DITA_OT/bin/dita -f xkcd -i document.ditamap
 ```
 
-Contribute
-==========
+## Contribute
 
 PRs accepted.
 
-License
-=======
+## License
 
 [Apache 2.0](LICENSE) © 2018 Jason Fox
 
