@@ -1,2 +1,1 @@
-build_dita*.xml linguist-language=Ant Build System
-run-splash.xml linguist-language=Ant Build System
+test/* linguist-vendored
