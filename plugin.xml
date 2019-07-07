@@ -4,10 +4,19 @@
   See the accompanying LICENSE file for applicable licenses.
 -->
 <plugin id="fox.jason.splash" version="2.0.0">
-	<!--feature extension="depend.preprocess.pre" value="display-xkcd"/-->
-	<feature extension="depend.preprocess.pre" value="cats.splash"/>
-	<feature extension="dita.xsl.messages" file="resource/messages.xml"/>
+	<!-- Create transtypes for direct invocation -->
 	<transtype abstract="false" desc="Display a random xkcd comic as a splash screen" name="xkcd"/>
 	<transtype abstract="false" desc="Display a random cat picture as a splash screen" name="cats"/>
+
+	<!-- 
+		Ensure that Cats or XKCD comic strips are displayed whenever a
+		transform is invoked - uncomment the lines as necessary.
+	-->
+	<!--feature extension="depend.preprocess.pre" value="display-xkcd"/-->
+	<feature extension="depend.preprocess.pre" value="cats.splash"/>
+	<!-- Import the overrides transform's ANT file -->
 	<feature extension="ant.import" file="build_dita2splash.xml"/>
+	<!-- Ensure the plugin's error and logging messages are available -->
+	<feature extension="dita.xsl.messages" file="resource/messages.xml"/>
+
 </plugin>
