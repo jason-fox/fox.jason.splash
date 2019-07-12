@@ -8,10 +8,10 @@
 //   of loading the data as XML.
 
 var input = project.getProperty("cats.info");
-var posImgUrl = input.indexOf("&lt;url&gt;");
-var lenImgUrl = input.indexOf("&lt;/url&gt;", posImgUrl);
-var posTitle = input.indexOf("&lt;source_url&gt;");
-var lenTitle = input.indexOf("&lt;/source_url&gt;", posTitle + 12);
+var posImgUrl = input.indexOf("<url>");
+var lenImgUrl = input.indexOf("</url>", posImgUrl);
+var posTitle = input.indexOf("<source_url>");
+var lenTitle = input.indexOf("</source_url>", posTitle + 12);
 
 project.setProperty(
   "splash.image.url",

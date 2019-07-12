@@ -41,6 +41,7 @@
 	<target if="splash.exists" name="cats.parse">
 		<loadfile failonerror="true" property="cats.info" srcfile="${splash.info.file}"/>
 		<script language="javascript" src="${dita.plugin.fox.jason.splash.dir}/resource/cats-parse.js"/>
+		<echo level="verbose" message="Cats image URL:  ${splash.image.url}"/>
 	</target>
 	<!--
 			Make an HTTP request to the XKCD API - check we are online and can obtain an image.
@@ -77,6 +78,7 @@
 		<get dest="${xkcd.json.file}" ignoreerrors="true" retries="1" src="https://xkcd.com/${num}/info.0.json"/>
 		<loadfile failonerror="true" property="xkcd.info" srcfile="${xkcd.json.file}"/>
 		<script language="javascript"  src="${dita.plugin.fox.jason.splash.dir}/resource/xkcd-parse.js"/>
+		<echo level="verbose" message="XKCD image URL: ${splash.image.url}"/>
 	</target>
 	<!--
 		Invoke the splash screen with the given parameters.
