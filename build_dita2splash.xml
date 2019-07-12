@@ -40,19 +40,7 @@
 	-->
 	<target if="splash.exists" name="cats.parse">
 		<loadfile failonerror="true" property="cats.info" srcfile="${splash.info.file}"/>
-		<script language="javascript">
-			
-		    var input = project.getProperty("cats.info");
-		    var posImgUrl = input.indexOf("&lt;url&gt;");
-		    var lenImgUrl = input.indexOf("&lt;/url&gt;", posImgUrl);
-		    var posTitle = input.indexOf("&lt;source_url&gt;");
-		    var lenTitle = input.indexOf("&lt;/source_url&gt;", posTitle + 12);
-		    
-		    project.setProperty("splash.image.url", input.substring(posImgUrl + 5, lenImgUrl));
-		    project.setProperty("splash.title", "Picture from " +input.substring(posTitle + 12, lenTitle)) ;
-		    
-		    
-		</script>
+		<script language="javascript" src="${dita.plugin.fox.jason.splash.dir}/resource/create-chapter-entry.js"/>
 	</target>
 	<!--
 			Make an HTTP request to the XKCD API - check we are online and can obtain an image.
@@ -84,30 +72,11 @@
 	-->
 	<target if="splash.exists" name="xkcd.parse">
 		<loadfile failonerror="true" property="xkcd.latest" srcfile="${splash.info.file}"/>
-		<script language="javascript">
-			
-		    var input = project.getProperty("xkcd.latest");
-		    var pos = input.indexOf("\"num\": ");
-		    var len = input.indexOf(",", pos);
-
-		    project.setProperty("num",  Math.floor((Math.random() * input.substring(pos + 6, len)) + 1));
-		    
-		</script>
+		<script language="javascript"  src="${dita.plugin.fox.jason.splash.dir}/resource/xkcd-select.js"/>
 		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="xkcd.json.file"/>
 		<get dest="${xkcd.json.file}" ignoreerrors="true" retries="1" src="https://xkcd.com/${num}/info.0.json"/>
 		<loadfile failonerror="true" property="xkcd.info" srcfile="${xkcd.json.file}"/>
-		<script language="javascript">
-			
-		    var input = project.getProperty("xkcd.info");
-		    var posImgUrl = input.indexOf("https://imgs.xkcd.com");
-		    var lenImgUrl = input.indexOf("\"", posImgUrl);
-		    var posTitle = input.indexOf("\"title\": ");
-		    var lenTitle = input.indexOf("\"", posTitle + 10);
-
-		    project.setProperty("splash.image.url", input.substring(posImgUrl, lenImgUrl));
-		    project.setProperty("splash.title", input.substring(posTitle + 10, lenTitle)) ;
-		    
-		</script>
+		<script language="javascript"  src="${dita.plugin.fox.jason.splash.dir}/resource/xkcd-parse.js"/>
 	</target>
 	<!--
 		Invoke the splash screen with the given parameters.
