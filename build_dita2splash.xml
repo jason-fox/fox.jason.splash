@@ -40,7 +40,7 @@
 	-->
 	<target if="splash.exists" name="cats.parse">
 		<loadfile failonerror="true" property="cats.info" srcfile="${splash.info.file}"/>
-		<script language="javascript" src="${dita.plugin.fox.jason.splash.dir}/resource/create-chapter-entry.js"/>
+		<script language="javascript" src="${dita.plugin.fox.jason.splash.dir}/resource/cats-parse.js"/>
 	</target>
 	<!--
 			Make an HTTP request to the XKCD API - check we are online and can obtain an image.
