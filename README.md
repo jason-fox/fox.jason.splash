@@ -33,6 +33,8 @@ The splash screen plug-in has been tested against [DITA-OT 3.x](http://www.dita-
 
 ## Installing DITA-OT
 
+<a href="https://www.dita-ot.org"><img src="https://www.dita-ot.org/images/dita-ot-logo.svg" align="right" height="55"></a>
+
 The DITA-OT Splash Screen is a plug-in for the DITA Open Toolkit.
 
 -   Full installation instructions for downloading DITA-OT can be found
