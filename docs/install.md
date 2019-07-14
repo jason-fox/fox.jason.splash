@@ -11,8 +11,6 @@ images.
 
 The DITA-OT Splash Screen is a plug-in for the DITA Open Toolkit.
 
-The DITA-OT Splash Screen is a plug-in for the DITA Open Toolkit.
-
 -   Full installation instructions for downloading DITA-OT can be found
     [here](https://www.dita-ot.org/3.3/topics/installing-client.html).
 
