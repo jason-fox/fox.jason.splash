@@ -15,7 +15,7 @@ Like any other transform, when invoked directly, the splash screen requires an i
 
 ### Displaying a random Cat Photo
 
-<a href="https://thecatapi.com"><img src="https://cdn2.thecatapi.com/logos/thecatapi_256xW.png" align="left" width="112" height="75" border-right-style="solid" border-right-width="10px" border-right-color="transparent"/></a>
+<a href="https://thecatapi.com"><img src="https://cdn2.thecatapi.com/logos/thecatapi_256xW.png" align="left" width="112" height="75" style="border-right-style:solid; border-right-width:10px; border-right-color:transparent"/></a>
 
 To display a random photo from the [Cat API](https://thecatapi.com/), use the `cats` transform.
 
@@ -25,7 +25,7 @@ PATH_TO_DITA_OT/bin/dita -f cats -i document.ditamap
 
 ### Displaying a random XKCD Comic Strip
 
-<a href="https://xkcd.com"><img src="https://xkcd.com/s/0b7742.png" align="left" width="122" height="55" border-right-style="solid" border-right-width="10px" border-right-color="transparent"/></a>
+<a href="https://xkcd.com"><img src="https://xkcd.com/s/0b7742.png" align="left" width="122" height="55" style="border-right-style:solid; border-right-width:10px; border-right-color:transparent"/></a>
 
 To display a random XKCD comic strip from [xkcd.com](https://xkcd.com/), use the `xkcd` transform.
 
