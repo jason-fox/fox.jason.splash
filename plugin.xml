@@ -4,7 +4,7 @@
   This file is part of the DITA-OT Splash Screen Plug-in project.
   See the accompanying LICENSE file for applicable licenses.
 -->
-<plugin id="fox.jason.splash" version="2.0.0">
+<plugin id="fox.jason.splash" version="2.1.0">
 	<!-- Create transtypes for direct invocation -->
 	<transtype abstract="false" desc="Display a random xkcd comic as a splash screen" name="xkcd"/>
 	<transtype abstract="false" desc="Display a random cat picture as a splash screen" name="cats"/>
