@@ -11,7 +11,8 @@
 This simple [DITA-OT Plug-in](https://www.dita-ot.org/plugins) automatically displays a random cat picture or xkcd comic strip as a splash screen whilst waiting for a build job to complete.
 
 
-# Table of Contents
+<details>
+<summary><strong>Table of Contents</strong></summary>
 
 -  [Install](#install)
   -  [Installing DITA-OT](#installing-dita-ot)
@@ -24,12 +25,14 @@ This simple [DITA-OT Plug-in](https://www.dita-ot.org/plugins) automatically dis
 - [Contribute](#contribute)
 - [License](#license)
 
+</details>
 
-# Install
+
+## Install
 
 The splash screen plug-in has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). It is recommended that you upgrade to the latest version. The splash screen plug-in relies on the use of ANT to obtain and display the splash screen image. ANT 1.9+ is recommended. Older versions of the `<get>` task may fail or timeout when requesting HTTPS images. 
 
-## Installing DITA-OT
+### Installing DITA-OT
 
 <a href="https://www.dita-ot.org"><img src="https://www.dita-ot.org/images/dita-ot-logo.svg" align="right" height="55"></a>
 
@@ -50,7 +53,7 @@ unzip -q dita-ot-3.3.4.zip
 rm dita-ot-3.3.4.zip
 ```
 
-## Installing the Plug-in
+### Installing the Plug-in
 
 -   Run the plug-in installation command:
 
@@ -61,9 +64,9 @@ dita -install https://github.com/jason-fox/fox.jason.splash/archive/master.zip
 The `dita` command line tool requires no additional configuration.
 
 
-# Usage
+## Usage
 
-## Automatically displaying a splash screen when running a build job
+### Automatically displaying a splash screen when running a build job
 
 The plugin is pre-configured to run as part of the `depend.preprocess.pre` build step. Running any ordinary build job will display a random cat photo.
 
@@ -71,11 +74,11 @@ The plugin is pre-configured to run as part of the `depend.preprocess.pre` build
 PATH_TO_DITA_OT/bin/dita -f pdf -o out -i document.ditamap
 ```
 
-## Invoking the splash screen directly from the Command line
+### Invoking the splash screen directly from the Command line
 
 Like any other transform, when invoked directly, the splash screen requires an input document
 
-### Displaying a random Cat Photo
+#### Displaying a random Cat Photo
 
 <a href="https://thecatapi.com"><img src="https://cdn2.thecatapi.com/logos/thecatapi_256xW.png" align="left" height="75"></a>
 
@@ -85,7 +88,7 @@ To display a random photo from the [Cat API](https://thecatapi.com/), use the `c
 PATH_TO_DITA_OT/bin/dita -f cats -i document.ditamap
 ```
 
-### Displaying a random XKCD Comic Strip
+#### Displaying a random XKCD Comic Strip
 
 <a href="https://xkcd.com"><img src="https://xkcd.com/s/0b7742.png" align="left" height="55"></a>
 
