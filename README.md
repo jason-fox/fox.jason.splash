@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/jason-fox/fox.jason.splash.svg?branch=master)](https://travis-ci.org/jason-fox/fox.jason.splash)
 [![Coverage Status](https://coveralls.io/repos/github/jason-fox/fox.jason.splash/badge.svg?branch=master)](https://coveralls.io/github/jason-fox/fox.jason.splash?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/splash-screen-plug-in-for-dita-ot/badge/?version=latest)](https://splash-screen-plug-in-for-dita-ot.readthedocs.io/en/latest/?badge=latest)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fox.jason.splash&metric=alert_status)](https://sonarcloud.io/dashboard?id=fox.jason.splash)
 
 
 
@@ -30,7 +31,7 @@ This simple [DITA-OT Plug-in](https://www.dita-ot.org/plugins) automatically dis
 
 ## Install
 
-The splash screen plug-in has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). It is recommended that you upgrade to the latest version. The splash screen plug-in relies on the use of ANT to obtain and display the splash screen image. ANT 1.9+ is recommended. Older versions of the `<get>` task may fail or timeout when requesting HTTPS images. 
+The splash screen plug-in has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). It is recommended that you upgrade to the latest version. The splash screen plug-in relies on the use of ANT to obtain and display the splash screen image. ANT 1.9+ is recommended. Older versions of the `<get>` task may fail or timeout when requesting HTTPS images.
 
 ### Installing DITA-OT
 
