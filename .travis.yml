@@ -14,6 +14,8 @@ addons:
     token:
       secure: "WYt4F1gcG9Jv8/Ov/VWedMVf1q95rqA2YhcTpLbYLHWoalx7LlFJ9lMgpBma/PNumXaMGeibW1GWAsFx6sSJLdyy58OMmARDYZ0mw3iUDcTDXD4M7lIvdwkd9jfhKQIspP49nUyumc6sSdVZwA+dR2kL+LZ1t92TTLbNCC5nEC5rd6PufTa13epNyVt0hrB0Gyrhc8xE/74uLQw0OMoV7HhJKisRk+AUVL2xDiMrYO+78r3m0XRHDfmtKqhDALNnsMoO1IRvQlA1+L8HYJB68F63yPMP140ZRolO0kL47P6moeJwcrrXJIV7b9DrsVN5KR1n32OekgENu5+Sjua7hdJqmJHu+tZnTqtM5jL3pVqu55Pkn5RZvLTvEpu6KmcAZzIgDxuEDLYL8jc4jNbjlMYnM4FO6+dexW66sxxM7hVVeGfpmbaHP2v80xAzEtHmIo/GGMTHy4jte2oWBQb2Ftr6cWAf3OQjG5eFU5E/x4lec8CPmF3uBBe4VtqlCERfyzBliO4vbeYuYGAgT6nUHcWLX5Fe9PHNIxa+sVdLTvnyFAyruDF5uCt/mcLsUhjf2lMGmquRkD3TanlRTaSFVBl+85JMi/m8aM27vJ/oaLftLp8q6V+3nxr8rCG6QQlhc+2emis30DCWRcQJ9K3T+yVr+XrnQP6PK9CcXvpsyTw="
 
+env:
+  - DITA_OT=3.4.1
 
 before_install:
   - zip -r fox.jason.splash.zip . -x *.zip* *.git/* *temp/* *out/*
@@ -28,21 +30,15 @@ install:
 script:
   - dita-ot-$DITA_OT/bin/dita --input dita-ot-$DITA_OT/plugins/fox.jason.splash -f unit-test --output . -v
 
-jobs:
-  include:
-    - stage: test
-      name: "Unit Tests: DITA_OT=3.4"
-      env: DITA_OT=3.4.1
+before_script:
+  - dita-ot-$DITA_OT/bin/dita --input dita-ot-$DITA_OT/plugins/fox.jason.splash -f xsl-instrument
 
-      before_script:
-        - dita-ot-$DITA_OT/bin/dita --input dita-ot-$DITA_OT/plugins/fox.jason.splash -f xsl-instrument
-
-      after_success:
-        - cp dita-ot-$DITA_OT/plugins/fox.jason.unit-test/resource/pom.xml pom.xml
-        - mvn clean org.eluder.coveralls:coveralls-maven-plugin:report
-        - rm -rf dita-ot-$DITA_OT
-        - mvn package
-        - sonar-scanner
+after_success:
+  - mvn package
+  - cp dita-ot-$DITA_OT/plugins/fox.jason.unit-test/resource/pom.xml pom.xml
+  - mvn clean org.eluder.coveralls:coveralls-maven-plugin:report
+  - rm -rf dita-ot-$DITA_OT
+  - sonar-scanner
 
 
 
