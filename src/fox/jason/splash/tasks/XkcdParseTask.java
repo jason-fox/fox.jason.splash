@@ -31,7 +31,7 @@ public class XkcdParseTask extends Task {
 	@Override
     public void execute(){
 
-		String input = project.getProperty("xkcd.info");
+		String input = getProject().getProperty("xkcd.info");
 		int posImgUrl = input.indexOf("https://imgs.xkcd.com");
 		int lenImgUrl = input.indexOf('"', posImgUrl);
 		int posTitle = input.indexOf("\"title\": ");
