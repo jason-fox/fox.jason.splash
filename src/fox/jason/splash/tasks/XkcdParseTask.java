@@ -14,31 +14,29 @@ import org.apache.tools.ant.Task;
 
 public class XkcdParseTask extends Task {
 
+  /**
+   * Creates a new <code>XkcdParseTask</code> instance.
+   */
+  public XkcdParseTask() {
+    super();
+  }
 
-	/**
-	 * Creates a new <code>XkcdParseTask</code> instance.
-	 */
-	public XkcdParseTask() {
-		super();
-	}
+  /**
+   * Method execute.
+   *
+   * @throws BuildException if something goes wrong
+   */
+  @Override
+  public void execute() {
+    String input = getProject().getProperty("xkcd.info");
+    int posImgUrl = input.indexOf("https://imgs.xkcd.com");
+    int lenImgUrl = input.indexOf('"', posImgUrl);
+    int posTitle = input.indexOf("\"title\": ");
+    int lenTitle = input.indexOf('"', posTitle + 10);
 
-	
-	/**
-     * Method execute.
-     *
-     * @throws BuildException if something goes wrong
-     */
-	@Override
-    public void execute(){
-
-		String input = getProject().getProperty("xkcd.info");
-		int posImgUrl = input.indexOf("https://imgs.xkcd.com");
-		int lenImgUrl = input.indexOf('"', posImgUrl);
-		int posTitle = input.indexOf("\"title\": ");
-		int lenTitle = input.indexOf('"', posTitle + 10);
-
-		getProject().setProperty("splash.image.url", input.substring(posImgUrl, lenImgUrl));
-		getProject().setProperty("splash.title", input.substring(posTitle + 10, lenTitle));
-
-	}
+    getProject()
+      .setProperty("splash.image.url", input.substring(posImgUrl, lenImgUrl));
+    getProject()
+      .setProperty("splash.title", input.substring(posTitle + 10, lenTitle));
+  }
 }
