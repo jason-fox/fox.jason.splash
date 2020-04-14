@@ -2,6 +2,7 @@
   	This file is part of the DITA-OT Splash Screen Plug-in project.
   	See the accompanying LICENSE file for applicable licenses.
 --><project xmlns:if="ant:if" xmlns:unless="ant:unless" name="fox.jason.splash">
+	<taskdef resource="fox/jason/splash/antlib.xml"/>
 	<!--
 		Set default values for the parameters passed into this plugin.
 	-->
@@ -14,7 +15,7 @@
 			<pathelement location="${dita.dir}/lib/ant.jar"/>
 		</path>
 		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="splash.info.file"/>
-		<taskdef resource="fox/jason/splash/antlib.xml"/>
+		
 
 	</target>
 	<!--
