@@ -7,6 +7,7 @@ package fox.jason.splash.tasks;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
+import java.util.Random;
 
 //   This function extracts the num count from the XKCD API
 //   response and then selects a random entry. The parsing has
@@ -15,11 +16,14 @@ import org.apache.tools.ant.Task;
 
 public class XkcdSelectTask extends Task {
 
+  private Random random;
+
   /**
    * Creates a new <code>XkcdSelectTask</code> instance.
    */
   public XkcdSelectTask() {
     super();
+    this.random = new Random();
   }
 
   /**
@@ -31,15 +35,13 @@ public class XkcdSelectTask extends Task {
   public void execute() {
     String input = getProject().getProperty("xkcd.latest");
     int pos = input.indexOf("\"num\": ");
-    int len = input.indexOf(",", pos);
+    int len = input.indexOf(',', pos);
 
     getProject()
       .setProperty(
         "num",
         Integer.toString(
-          (int) Math.floor(
-            Math.random() * Integer.parseInt(input.substring(pos + 7, len)) + 1
-          )
+          this.random.nextInt( Integer.parseInt(input.substring(pos + 7, len))) + 1
         )
       );
   }
