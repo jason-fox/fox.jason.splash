@@ -15,26 +15,9 @@
 		</path>
 		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="splash.info.file"/>
 
-		<property name="splash.jar" value="${dita.plugin.fox.jason.splash.dir}/lib/splash-1.0.jar"/>
-
-
-		<taskdef classname="fox.jason.splash.tasks.CatsParseTask" name="cats-parse" >
-			<classpath>
-				<pathelement location="${splash.jar}"/>
-			</classpath>
-		</taskdef>
-
-		<taskdef classname="fox.jason.splash.tasks.XkcdParseTask" name="xkcd-parse" >
-			<classpath>
-				<pathelement location="${splash.jar}"/>
-			</classpath>
-		</taskdef>
-
-		<taskdef classname="fox.jason.splash.tasks.XkcdSelectTask" name="xkcd-select" >
-			<classpath>
-				<pathelement location="${splash.jar}"/>
-			</classpath>
-		</taskdef>
+		<taskdef classname="fox.jason.splash.tasks.CatsParseTask" name="cats-parse" />
+		<taskdef classname="fox.jason.splash.tasks.XkcdParseTask" name="xkcd-parse" />
+		<taskdef classname="fox.jason.splash.tasks.XkcdSelectTask" name="xkcd-select" />
 
 	</target>
 	<!--
