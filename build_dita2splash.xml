@@ -14,10 +14,7 @@
 			<pathelement location="${dita.dir}/lib/ant.jar"/>
 		</path>
 		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="splash.info.file"/>
-
-		<taskdef classname="fox.jason.splash.tasks.CatsParseTask" name="cats-parse" />
-		<taskdef classname="fox.jason.splash.tasks.XkcdParseTask" name="xkcd-parse" />
-		<taskdef classname="fox.jason.splash.tasks.XkcdSelectTask" name="xkcd-select" />
+		<taskdef resource="fox/jason/splash/antlib.xml"/>
 
 	</target>
 	<!--

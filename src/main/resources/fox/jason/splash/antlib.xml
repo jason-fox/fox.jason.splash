@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--ant-->
+<!--
+	This file is part of the DITA-OT Splash Screen Plug-in project.
+	See the accompanying LICENSE file for applicable licenses.
+-->
+<antlib>
+
+	<taskdef classname="fox.jason.splash.tasks.CatsParseTask" name="cats-parse" onerror="ignore"/>
+	<taskdef classname="fox.jason.splash.tasks.XkcdParseTask" name="xkcd-parse" onerror="ignore"/>
+	<taskdef classname="fox.jason.splash.tasks.XkcdSelectTask" name="xkcd-select" onerror="ignore"/>
+
+</antlib>
