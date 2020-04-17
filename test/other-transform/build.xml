@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="unit-test">
+	<import file="../bootstrap.xml"/>
+	<description>
+		Expect that the pdf transtype invokes a cat splash screen
+	</description>
+	<target name="unit-test">
+		<exec-transtype transtype="pdf"/>
+		<contains-text expected="Requesting image from the Cats API."/>
+	</target>
+</project>
