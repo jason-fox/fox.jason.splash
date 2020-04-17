@@ -110,7 +110,7 @@ PRs accepted.
 
 ## License
 
-[Apache 2.0](LICENSE) © 2018 Jason Fox
+[Apache 2.0](LICENSE) © 2018 - 2020 Jason Fox
 
 The Program includes the following additional software component which was obtained under license:
 
