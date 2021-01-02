@@ -14,6 +14,7 @@
 			<pathelement location="${dita.dir}/lib/ant-launcher.jar"/>
 			<pathelement location="${dita.dir}/lib/ant.jar"/>
 		</path>
+		<mkdir dir="${dita.temp.dir}"/>
 		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="splash.info.file"/>
 		
 
