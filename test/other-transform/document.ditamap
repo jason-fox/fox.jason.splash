@@ -2,7 +2,9 @@
 
 <!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd">
 <bookmap>
-  <topicref format="dita" href="topic.dita" type="topic"></topicref>
+  <chapter navtitle="test">
+    <topicref format="dita" href="topic.dita" type="topic"></topicref>
+  </chapter>
 </bookmap>
 
 

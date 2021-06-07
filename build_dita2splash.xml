@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!--ant--><!--
   	This file is part of the DITA-OT Splash Screen Plug-in project.
   	See the accompanying LICENSE file for applicable licenses.
---><project xmlns:if="ant:if" xmlns:unless="ant:unless" name="fox.jason.splash">
-	<taskdef resource="fox/jason/splash/antlib.xml"/>
+--><project xmlns:if="ant:if" xmlns:unless="ant:unless" xmlns:splash="antlib:fox.jason.splash" name="fox.jason.splash">
 	<!--
 		Set default values for the parameters passed into this plugin.
 	-->
@@ -16,8 +15,6 @@
 		</path>
 		<mkdir dir="${dita.temp.dir}"/>
 		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="splash.info.file"/>
-		
-
 	</target>
 	<!--
 		Make an HTTP request to the Cats API - check we are online and can obtain an image.
@@ -44,7 +41,7 @@
 	-->
 	<target if="splash.exists" name="cats.parse">
 		<loadfile failonerror="true" property="cats.info" srcfile="${splash.info.file}"/>
-		<cats-parse/>
+		<splash:cats-parse/>
 		<echo level="verbose" message="Cats image URL:  ${splash.image.url}"/>
 	</target>
 	<!--
@@ -77,11 +74,11 @@
 	-->
 	<target if="splash.exists" name="xkcd.parse">
 		<loadfile failonerror="true" property="xkcd.latest" srcfile="${splash.info.file}"/>
-		<xkcd-select/>
+		<splash:xkcd-select/>
 		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="xkcd.json.file"/>
 		<get dest="${xkcd.json.file}" ignoreerrors="true" retries="1" src="https://xkcd.com/${num}/info.0.json"/>
 		<loadfile failonerror="true" property="xkcd.info" srcfile="${xkcd.json.file}"/>
-		<xkcd-parse/>
+		<splash:xkcd-parse/>
 		<echo level="verbose" message="XKCD image URL: ${splash.image.url}"/>
 	</target>
 	<!--
