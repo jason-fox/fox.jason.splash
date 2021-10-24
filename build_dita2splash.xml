@@ -1,7 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><!--ant--><!--
+<?xml version="1.0" encoding="UTF-8"?>
+<!--ant-->
+<!--
   	This file is part of the DITA-OT Splash Screen Plug-in project.
   	See the accompanying LICENSE file for applicable licenses.
---><project xmlns:if="ant:if" xmlns:unless="ant:unless" xmlns:splash="antlib:fox.jason.splash" name="fox.jason.splash">
+-->
+<project
+  xmlns:if="ant:if"
+  xmlns:unless="ant:unless"
+  xmlns:splash="antlib:fox.jason.splash"
+  name="fox.jason.splash"
+>
 	<!--
 		Set default values for the parameters passed into this plugin.
 	-->
@@ -14,7 +22,11 @@
 			<pathelement location="${dita.dir}/lib/ant.jar"/>
 		</path>
 		<mkdir dir="${dita.temp.dir}"/>
-		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="splash.info.file"/>
+		<tempfile
+      deleteonexit="true"
+      destdir="${dita.temp.dir}"
+      property="splash.info.file"
+    />
 	</target>
 	<!--
 		Make an HTTP request to the Cats API - check we are online and can obtain an image.
@@ -25,7 +37,12 @@
 			<param name="1" value="Requesting image from the Cats API."/>
 		</dita-ot-echo>
 
-		<get dest="${splash.info.file}" ignoreerrors="true" retries="1" src="https://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med"/>
+		<get
+      dest="${splash.info.file}"
+      ignoreerrors="true"
+      retries="1"
+      src="https://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med"
+    />
 		<condition property="splash.exists" value="true">
 			<and>
 				<available file="${splash.info.file}"/>
@@ -40,7 +57,11 @@
 		Important: To protect yourself from Copyright issues, when you show an Image you MUST have it linked to; or clearly show the 'source_url' the value of the XML, or leave the link in-place with HTML format. This then links back to the image on thecatapi.com, where we then link to where we do the same to the last known Copyright holder.
 	-->
 	<target if="splash.exists" name="cats.parse">
-		<loadfile failonerror="true" property="cats.info" srcfile="${splash.info.file}"/>
+		<loadfile
+      failonerror="true"
+      property="cats.info"
+      srcfile="${splash.info.file}"
+    />
 		<splash:cats-parse/>
 		<echo level="verbose" message="Cats image URL:  ${splash.image.url}"/>
 	</target>
@@ -52,7 +73,12 @@
 		<dita-ot-echo id="XKCD001I">
 			<param name="1" value="Requesting image from XKCD API."/>
 		</dita-ot-echo>
-		<get dest="${splash.info.file}" ignoreerrors="true" retries="1" src="https://xkcd.com/info.0.json"/>
+		<get
+      dest="${splash.info.file}"
+      ignoreerrors="true"
+      retries="1"
+      src="https://xkcd.com/info.0.json"
+    />
 		<condition property="splash.exists" value="true">
 			<and>
 				<available file="${splash.info.file}"/>
@@ -73,10 +99,23 @@
 		simple string manipulation has been used to extract the necessary JSON elements.
 	-->
 	<target if="splash.exists" name="xkcd.parse">
-		<loadfile failonerror="true" property="xkcd.latest" srcfile="${splash.info.file}"/>
+		<loadfile
+      failonerror="true"
+      property="xkcd.latest"
+      srcfile="${splash.info.file}"
+    />
 		<splash:xkcd-select/>
-		<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="xkcd.json.file"/>
-		<get dest="${xkcd.json.file}" ignoreerrors="true" retries="1" src="https://xkcd.com/${num}/info.0.json"/>
+		<tempfile
+      deleteonexit="true"
+      destdir="${dita.temp.dir}"
+      property="xkcd.json.file"
+    />
+		<get
+      dest="${xkcd.json.file}"
+      ignoreerrors="true"
+      retries="1"
+      src="https://xkcd.com/${num}/info.0.json"
+    />
 		<loadfile failonerror="true" property="xkcd.info" srcfile="${xkcd.json.file}"/>
 		<splash:xkcd-parse/>
 		<echo level="verbose" message="XKCD image URL: ${splash.image.url}"/>
@@ -85,7 +124,12 @@
 		Invoke the splash screen with the given parameters.
 	-->
 	<target if="splash.exists" name="splash">
-		<java classname="org.apache.tools.ant.launch.Launcher" classpathref="splash.classpath" fork="true" spawn="true">
+		<java
+      classname="org.apache.tools.ant.launch.Launcher"
+      classpathref="splash.classpath"
+      fork="true"
+      spawn="true"
+    >
 			<arg value="-buildfile"/>
 			<arg value="${dita.plugin.fox.jason.splash.dir}/run-splash.xml"/>
 			<arg value="-Dsplash.image=${splash.image.url}"/>

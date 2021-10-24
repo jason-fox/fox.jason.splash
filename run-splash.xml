@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><!--ant-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!--ant-->
 <!--
   	This file is part of the DITA-OT Splash Screen Plug-in project.
   	See the accompanying LICENSE file for applicable licenses.
@@ -9,6 +10,10 @@
 		an alternative classpath including ANT swing and override the java.awt.headless attribute.
 	-->
 	<target name="run-splash">
-		<splash displaytext="${splash.title}" imageurl="${splash.image}" showduration="${splash.duration}"/>
+		<splash
+      displaytext="${splash.title}"
+      imageurl="${splash.image}"
+      showduration="${splash.duration}"
+    />
 	</target>
 </project>
