@@ -4,7 +4,7 @@
   This file is part of the DITA-OT Splash Screen Plug-in project.
   See the accompanying LICENSE file for applicable licenses.
 -->
-<plugin id="fox.jason.splash" version="2.2.0">
+<plugin id="fox.jason.splash" version="2.2.1">
 	<!-- Create transtypes for direct invocation -->
 	<transtype
     abstract="false"
