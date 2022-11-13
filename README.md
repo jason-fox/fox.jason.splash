@@ -4,7 +4,6 @@
 [![DITA-OT 4.0](https://img.shields.io/badge/DITA--OT-4.0-green.svg)](http://www.dita-ot.org/4.0)
 [![CI](https://github.com/jason-fox/fox.jason.splash/workflows/CI/badge.svg)](https://github.com/jason-fox/fox.jason.splash/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/jason-fox/fox.jason.splash/badge.svg?branch=master)](https://coveralls.io/github/jason-fox/fox.jason.splash?branch=master)
-[![Documentation Status](https://readthedocs.org/projects/splash-screen-plug-in-for-dita-ot/badge/?version=latest)](https://splash-screen-plug-in-for-dita-ot.readthedocs.io/en/latest/?badge=latest)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fox.jason.splash&metric=alert_status)](https://sonarcloud.io/dashboard?id=fox.jason.splash)
 
 This simple [DITA-OT Plug-in](https://www.dita-ot.org/plugins) automatically displays a random cat picture or xkcd comic
