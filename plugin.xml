@@ -4,7 +4,7 @@
   This file is part of the DITA-OT Splash Screen Plug-in project.
   See the accompanying LICENSE file for applicable licenses.
 -->
-<plugin id="fox.jason.splash" version="2.2.1">
+<plugin id="fox.jason.splash" version="3.0.0">
 	<!-- Create transtypes for direct invocation -->
 	<transtype
     abstract="false"
@@ -16,15 +16,25 @@
     desc="Display a random cat picture as a splash screen"
     name="cats"
   />
+  <transtype
+    abstract="false"
+    desc="Display a random anime picture as a splash screen"
+    name="anime"
+  />
 
 	<!-- 
 		Ensure that Cats or XKCD comic strips are displayed whenever a
 		transform is invoked - uncomment the lines as necessary.
-	-->
-	<!--feature extension="depend.preprocess.pre" value="display-xkcd"/-->
+
+	<feature extension="depend.preprocess.pre" value="display-xkcd"/>
+	<feature extension="depend.preprocess.pre" value="display-xkcd"/>
+	<feature extension="depend.preprocess.pre" value="display-xkcd"/>
 	<feature extension="depend.preprocess.pre" value="cats.splash"/>
+-->
+
+	<feature extension="depend.preprocess.pre" value="random.splash"/>
 	<!-- Import the overrides transform's ANT file -->
-	<feature extension="dita.conductor.lib.import" file="lib/splash-1.0.jar"/>
+	<feature extension="dita.conductor.lib.import" file="lib/splash-2.0.jar"/>
 	<feature extension="ant.import" file="build_dita2splash.xml"/>
 	<!-- Ensure the plugin's error and logging messages are available -->
 	<feature extension="dita.xsl.messages" file="resource/messages.xml"/>

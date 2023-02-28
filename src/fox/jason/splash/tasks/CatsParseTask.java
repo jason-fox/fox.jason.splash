@@ -28,7 +28,7 @@ public class CatsParseTask extends Task {
    */
   @Override
   public void execute() {
-    String input = getProject().getProperty("cats.info");
+    String input = getProject().getProperty("catsapi.info");
     int posImgUrl = input.indexOf("<url>");
     int lenImgUrl = input.indexOf("</url>", posImgUrl);
     int posTitle = input.indexOf("<source_url>");

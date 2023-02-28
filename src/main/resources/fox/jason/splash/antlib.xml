@@ -21,5 +21,15 @@
     name="xkcd-select"
     onerror="ignore"
   />
+    <taskdef
+    classname="fox.jason.splash.tasks.AnimeSelectTask"
+    name="anime-select"
+    onerror="ignore"
+  />
+    <taskdef
+    classname="fox.jason.splash.tasks.RandomSelectTask"
+    name="random-select"
+    onerror="ignore"
+  />
 
 </antlib>
