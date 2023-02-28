@@ -138,13 +138,25 @@
 		</java>
 	</target>
 
-
-	<target name="anime.parse">
+	<!--
+		Extracts the image URL from thisanimedoesnotexist.
+	-->
+	<target name="anime.seed">
 		<splash:anime-select/>
 		<property name="splash.title" value="This Anime does not exist"/>
 		<property name="splash.exists" value="true"/>
 		<property name="splash.image.url" value="https://thisanimedoesnotexist.ai/results/psi-${anime.psi}/seed3${anime.seed}.png"/>
 		<echo level="verbose" message="Anime image URL: ${splash.image.url}"/>
+	</target>
+
+	<!--
+		Fixed URL from Lorem Picsum
+	-->
+	<target name="picsum.seed">
+		<property name="splash.exists" value="true"/>
+		<property name="splash.title" value="Lorem Picsum Image"/>
+		<property name="splash.image.url" value="https://picsum.photos/600/400"/>
+		<echo level="verbose" message="https://picsum.photos/600/400"/>
 	</target>
 
 	<!--target name="person.parse">
@@ -160,13 +172,14 @@
 		<property name="splash.image.url" value="https://thiscatdoesnotexist.com"/>
 		<echo level="verbose" message="cat image URL: ${splash.image.url}"/>
 	</target-->
-	
+
 	<!--
 		Targets to be used when chaining the splash plugin from other plug-ins.
 	-->
 	<target depends="splash.init,xkcd.init,xkcd.parse,splash" name="xkcd.splash"/>
 	<target depends="splash.init,catsapi.init,catsapi.parse,splash" name="catsapi.splash"/>
-	<target depends="splash.init,anime.parse,splash" name="anime.splash"/>
+	<target depends="splash.init,anime.seed,splash" name="anime.splash"/>
+	<target depends="splash.init,picsum.seed,splash" name="picsum.splash"/>
 
 
 	<target name="random.splash">
@@ -180,4 +193,5 @@
 	<target depends="xkcd.splash" name="dita2xkcd"/>
 	<target depends="catsapi.splash" name="dita2cats"/>
 	<target depends="anime.splash" name="dita2anime"/>
+	<target depends="picsum.splash" name="dita2picsum"/>
 </project>

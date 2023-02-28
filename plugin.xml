@@ -21,18 +21,25 @@
     desc="Display a random anime picture as a splash screen"
     name="anime"
   />
+  <transtype
+    abstract="false"
+    desc="Display a random placeholder picture as a splash screen"
+    name="picsum"
+  />
 
 	<!-- 
-		Ensure that Cats or XKCD comic strips are displayed whenever a
+		Ensure that only Cats, Anime Characters, placeholder images or
+		 XKCD comic strips are displayed whenever a
 		transform is invoked - uncomment the lines as necessary.
-
-	<feature extension="depend.preprocess.pre" value="display-xkcd"/>
-	<feature extension="depend.preprocess.pre" value="display-xkcd"/>
-	<feature extension="depend.preprocess.pre" value="display-xkcd"/>
-	<feature extension="depend.preprocess.pre" value="cats.splash"/>
+	-->
+	<feature extension="depend.preprocess.pre" value="random.splash"/>
+<!--
+	<feature extension="depend.preprocess.pre" value="picsum.splash"/>
+	<feature extension="depend.preprocess.pre" value="anime.splash"/>
+	<feature extension="depend.preprocess.pre" value="xkcd.splash"/>
+	<feature extension="depend.preprocess.pre" value="catsapi.splash"/>
 -->
 
-	<feature extension="depend.preprocess.pre" value="random.splash"/>
 	<!-- Import the overrides transform's ANT file -->
 	<feature extension="dita.conductor.lib.import" file="lib/splash-2.0.jar"/>
 	<feature extension="ant.import" file="build_dita2splash.xml"/>

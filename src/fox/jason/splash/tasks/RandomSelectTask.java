@@ -33,17 +33,20 @@ public class RandomSelectTask extends Task {
   public void execute() {
     String task;
 
-    switch(this.random.nextInt(3) +1) {
+    switch(this.random.nextInt(4) +1) {
       case 1:
         task = "anime.splash";
         break;
       case 2:
         task = "xkcd.splash";
         break;
-     /*case 3:
+      case 3:
+        task = "picsum.splash";
+        break;
+     /*case 4:
         task = "cats.not.exist.splash";
         break;
-     /* case 4:
+     /* case 5:
         task = "person.not.exist.splash";
         break;*/
       default:

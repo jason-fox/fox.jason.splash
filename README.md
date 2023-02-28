@@ -72,7 +72,7 @@ The `dita` command line tool requires no additional configuration.
 ### Automatically displaying a splash screen when running a build job
 
 The plugin is pre-configured to run as part of the `depend.preprocess.pre` build step. Running any ordinary build job
-will display a random cat photo.
+will display a placeholder image, a random cat photo, an anime character or xkcd comic strip.
 
 ```console
 PATH_TO_DITA_OT/bin/dita -f pdf -o out -i document.ditamap
@@ -102,13 +102,35 @@ To display a random XKCD comic strip from [xkcd.com](https://xkcd.com/), use the
 PATH_TO_DITA_OT/bin/dita -f xkcd -i document.ditamap
 ```
 
+#### Displaying a random Anime Character
+
+<a href="https://thisanimedoesnotexist.ai/"><img src="https://thisanimedoesnotexist.ai/favicon-32x32.png" align="left" height="55"></a>
+
+To display a random anime character from [thisanimedoesnotexist.ai](https://thisanimedoesnotexist.ai/), use the `anime` transform.
+
+```console
+PATH_TO_DITA_OT/bin/dita -f anime -i document.ditamap
+```
+
+### Displaying a random Placeholder Image
+
+<a href="https://picsum.photos/"><img src="https://picsum.photos/assets/images/favicon/favicon-32x32.png" align="left" height="55"></a>
+
+To display a placeholder image from [picsum.photos](https://picsum.photos/), use the `picsum` transform.
+
+```console
+PATH_TO_DITA_OT/bin/dita -f picsum -i document.ditamap
+```
+
+
+
 ## Contribute
 
 PRs accepted.
 
 ## License
 
-[Apache 2.0](LICENSE) © 2018 - 2022 Jason Fox
+[Apache 2.0](LICENSE) © 2018 - 2023 Jason Fox
 
 The Program includes the following additional software component which was obtained under license:
 
