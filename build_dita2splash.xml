@@ -141,21 +141,27 @@
 	<!--
 		Extracts the image URL from thisanimedoesnotexist.
 	-->
-	<target name="anime.seed">
+	<target name="anime.init">
 		<splash:anime-select/>
 		<property name="splash.title" value="This Anime does not exist"/>
 		<property name="splash.exists" value="true"/>
 		<property name="splash.image.url" value="https://thisanimedoesnotexist.ai/results/psi-${anime.psi}/seed3${anime.seed}.png"/>
+		<dita-ot-echo id="XKCD001I">
+			<param name="1" value="Requesting image from this anime does not exist."/>
+		</dita-ot-echo>
 		<echo level="verbose" message="Anime image URL: ${splash.image.url}"/>
 	</target>
 
 	<!--
 		Fixed URL from Lorem Picsum
 	-->
-	<target name="picsum.seed">
+	<target name="picsum.init">
 		<property name="splash.exists" value="true"/>
 		<property name="splash.title" value="Lorem Picsum Image"/>
 		<property name="splash.image.url" value="https://picsum.photos/600/400"/>
+		<dita-ot-echo id="XKCD001I">
+			<param name="1" value="Requesting image from Lorem Picsum."/>
+		</dita-ot-echo>
 		<echo level="verbose" message="https://picsum.photos/600/400"/>
 	</target>
 
@@ -178,8 +184,8 @@
 	-->
 	<target depends="splash.init,xkcd.init,xkcd.parse,splash" name="xkcd.splash"/>
 	<target depends="splash.init,catsapi.init,catsapi.parse,splash" name="catsapi.splash"/>
-	<target depends="splash.init,anime.seed,splash" name="anime.splash"/>
-	<target depends="splash.init,picsum.seed,splash" name="picsum.splash"/>
+	<target depends="splash.init,anime.init,splash" name="anime.splash"/>
+	<target depends="splash.init,picsum.init,splash" name="picsum.splash"/>
 
 
 	<target name="random.splash">
