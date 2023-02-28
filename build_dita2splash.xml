@@ -189,6 +189,9 @@
 
 
 	<target name="random.splash">
+		<dita-ot-echo id="XKCD001I">
+			<param name="1" value="Requesting a random image."/>
+		</dita-ot-echo>
 		<splash:random-select/>
 		<antcall target="${random.select}"/>
 	</target>
