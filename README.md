@@ -112,7 +112,7 @@ To display a random anime character from [thisanimedoesnotexist.ai](https://this
 PATH_TO_DITA_OT/bin/dita -f anime -i document.ditamap
 ```
 
-### Displaying a random Placeholder Image
+#### Displaying a random Placeholder Image
 
 <a href="https://picsum.photos/"><img src="https://picsum.photos/assets/images/favicon/favicon-32x32.png" align="left" height="55"></a>
 
