@@ -188,7 +188,9 @@
 	<target depends="splash.init,picsum.init,splash" name="picsum.splash"/>
 
 
-	<target name="random.splash">
+	<target 
+		name="random.splash"
+		description="Generating Splash Screen">
 		<dita-ot-echo id="XKCD001I">
 			<param name="1" value="Requesting a random image."/>
 		</dita-ot-echo>
