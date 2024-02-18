@@ -80,49 +80,80 @@ PATH_TO_DITA_OT/bin/dita -f pdf -o out -i document.ditamap
 
 ### Invoking the splash screen directly from the Command line
 
-Like any other transform, when invoked directly, the splash screen requires an input document
+Like any other transform, when invoked directly, the splash screen requires an input document.
+Use the `splash` transform to invoke the image only.
 
 #### Displaying a random Cat Photo
 
 <a href="https://thecatapi.com"><img src="https://cdn2.thecatapi.com/logos/thecatapi_256xW.png" align="left" height="75"></a>
 
-To display a random photo from the [Cat API](https://thecatapi.com/), use the `cats` transform.
+To display a random photo from the [Cat API](https://thecatapi.com/):
 
 ```console
-PATH_TO_DITA_OT/bin/dita -f cats -i document.ditamap
+PATH_TO_DITA_OT/bin/dita -f splash -i document.ditamap --splash.source=cats
 ```
+
+Obtain a key from the Cat API to access more images. see https://thecatapi.com/#pricing
+
+#### Displaying a random Dog Photo
+
+<a href="https://thedogapi.com"><img src="https://cdn2.thedogapi.com/logos/thedogapi_256xW.png" align="left" height="75"></a>
+
+To display a random photo from the [Dog API](https://thecatapi.com/):
+
+```console
+PATH_TO_DITA_OT/bin/dita -f splash -i document.ditamap --splash.source=cats
+```
+
+Obtain a key from the Dog API to access more images. see https://thedogapi.com/#pricing
 
 #### Displaying a random XKCD Comic Strip
 
 <a href="https://xkcd.com"><img src="https://xkcd.com/s/0b7742.png" align="left" height="55"></a>
 
-To display a random XKCD comic strip from [xkcd.com](https://xkcd.com/), use the `xkcd` transform.
+To display a random XKCD comic strip from [xkcd.com](https://xkcd.com/):
 
 ```console
-PATH_TO_DITA_OT/bin/dita -f xkcd -i document.ditamap
+PATH_TO_DITA_OT/bin/dita -f splash -i document.ditamap --splash.source=xkcd
 ```
 
 #### Displaying a random Anime Character
 
 <a href="https://thisanimedoesnotexist.ai/"><img src="https://thisanimedoesnotexist.ai/favicon-32x32.png" align="left" height="55"></a>
 
-To display a random anime character from [thisanimedoesnotexist.ai](https://thisanimedoesnotexist.ai/), use the `anime` transform.
+To display a random anime character from [thisanimedoesnotexist.ai](https://thisanimedoesnotexist.ai/):
 
 ```console
-PATH_TO_DITA_OT/bin/dita -f anime -i document.ditamap
+PATH_TO_DITA_OT/bin/dita -f anime -i document.ditamap --splash.source=anime
 ```
 
 #### Displaying a random Placeholder Image
 
 <a href="https://picsum.photos/"><img src="https://picsum.photos/assets/images/favicon/favicon-32x32.png" align="left" height="55"></a>
 
-To display a placeholder image from [picsum.photos](https://picsum.photos/), use the `picsum` transform.
+To display a placeholder image from [picsum.photos](https://picsum.photos/):
 
 ```console
-PATH_TO_DITA_OT/bin/dita -f picsum -i document.ditamap
+PATH_TO_DITA_OT/bin/dita -f splash -i document.ditamap --splash.source=picsum
 ```
 
 
+### Parameter Reference
+
+-   `splash.source` - Return images of a specific type
+    - `anime`
+    - `cats`
+    - `dogs`
+    - `picsum`
+    - `xkcd`
+
+The `cfg/configuration` properties file allows for further customization
+
+-   `cats.api_key` - API Key for the Cat API
+-   `cats.api.extend` - Additional parameters for the Cat API
+-   `dogs.api_key` - API Key for the Dog API
+-   `dogs.api.extend` - Additional parameters for the Dog API with a key
+-   `splash.resizer.url` - Fix the image splash screen width using a resize service
 
 ## Contribute
 

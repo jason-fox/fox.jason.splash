@@ -33,31 +33,28 @@ public class RandomSelectTask extends Task {
   public void execute() {
     String task;
 
-    switch(this.random.nextInt(4) +1) {
+    switch(this.random.nextInt(5) +1) {
       case 1:
-        task = "anime.splash";
+        task = "anime";
         break;
       case 2:
-        task = "xkcd.splash";
+        task = "xkcd";
         break;
       case 3:
-        task = "picsum.splash";
+        task = "picsum";
         break;
-     /*case 4:
-        task = "cats.not.exist.splash";
+      case 4:
+        task = "dogs";
         break;
-     /* case 5:
-        task = "person.not.exist.splash";
-        break;*/
       default:
-        task = "catsapi.splash";
+        task = "cats";
         break;
     }
 
 
     getProject()
       .setProperty(
-        "random.select",
+        "splash.source",
         task
       );
   }

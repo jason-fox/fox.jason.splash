@@ -32,16 +32,22 @@
 		Make an HTTP request to the Cats API - check we are online and can obtain an image.
 		For more information see: http://thecatapi.com/docs.html
 	-->
-	<target name="catsapi.init">
-		<dita-ot-echo id="CATS001I" unless:set="otversion.legacy">
-			<param name="1" value="Requesting image from the Cats API."/>
-		</dita-ot-echo>
+	<target 
+		name="cats.init"
+		description="Requesting image from the Cats API.">
+
+		<local name="cats.url"/>
+		<local name="cats.url.base"/>
+		<property name="cats.url.base" if:set="cats.api_key" value="https://api.thecatapi.com/v1/images/search?api_key=${cats.api_key}"/>
+		<property name="cats.url.base" unless:set="cats.api_key" value="https://api.thecatapi.com/v1/images/search"/>
+		<property name="cats.url" if:set="cats.api.extend" value="${cats.url.base}&amp;${cats.api.extend}"/>
+		<property name="cats.url" unless:set="cats.api.extend" value="${cats.url.base}"/>
 
 		<get
       dest="${splash.info.file}"
       ignoreerrors="true"
       retries="1"
-      src="https://thecatapi.com/api/images/get?format=xml&amp;type=jpg,gif&amp;size=med"
+      src="${cats.url}"
     />
 		<condition property="splash.exists" value="true">
 			<and>
@@ -50,29 +56,70 @@
 			</and>
 		</condition>
 	</target>
+
+	<!--
+		Make an HTTP request to the Dogs API - check we are online and can obtain an image.
+		For more information see: http://thedogapi.com/docs.html
+	-->
+	<target 
+		name="dogs.init"
+		description="Requesting image from the Dogs API.">
+
+		<local name="dogs.url"/>
+		<local name="dogs.url.base"/>
+		<property name="dogs.url.base" if:set="dogs.api_key" value="https://api.thedogapi.com/v1/images/search?api_key=${dogs.api_key}"/>
+		<property name="dogs.url.base" unless:set="dogs.api_key" value="https://api.thedogapi.com/v1/images/search"/>
+		<property name="dogs.url" if:set="dogs.api.extend" value="${dogs.url.base}&amp;${dogs.api.extend}"/>
+		<property name="dogs.url" unless:set="dogs.api.extend" value="${dogs.url.base}"/>
+
+		<get
+      dest="${splash.info.file}"
+      ignoreerrors="true"
+      retries="1"
+      src="${dogs.url}"
+    />
+		<condition property="splash.exists" value="true">
+			<and>
+				<available file="${splash.info.file}"/>
+				<length file="${splash.info.file}" length="0" when="gt"/>
+			</and>
+		</condition>
+	</target>
+
 	<!--
 		Extracts the image URL and attribution from the Cat API response. The parsing has been done
 		using simple string manipulation instead of loading the data as XML.
 
 		Important: To protect yourself from Copyright issues, when you show an Image you MUST have it linked to; or clearly show the 'source_url' the value of the XML, or leave the link in-place with HTML format. This then links back to the image on thecatapi.com, where we then link to where we do the same to the last known Copyright holder.
 	-->
-	<target if="splash.exists" name="catsapi.parse">
+	<target if="splash.exists" name="cats.parse">
 		<loadfile
       failonerror="true"
-      property="catsapi.info"
+      property="cats.info"
       srcfile="${splash.info.file}"
     />
 		<splash:cats-parse/>
 		<echo level="verbose" message="Cats image URL:  ${splash.image.url}"/>
 	</target>
+
+
+	<target if="splash.exists" name="dogs.parse">
+		<loadfile
+      failonerror="true"
+      property="dogs.info"
+      srcfile="${splash.info.file}"
+    />
+		<splash:dogs-parse/>
+		<echo level="verbose" message="Dogs image URL:  ${splash.image.url}"/>
+	</target>
+
 	<!--
 			Make an HTTP request to the XKCD API - check we are online and can obtain an image.
 			For more information see: https://xkcd.com/json.html
 	-->
-	<target name="xkcd.init">
-		<dita-ot-echo id="XKCD001I">
-			<param name="1" value="Requesting image from XKCD API."/>
-		</dita-ot-echo>
+	<target 
+		name="xkcd.init"
+		description="Requesting image from XKCD API.">
 		<get
       dest="${splash.info.file}"
       ignoreerrors="true"
@@ -124,6 +171,7 @@
 		Invoke the splash screen with the given parameters.
 	-->
 	<target if="splash.exists" name="splash">
+		<property name="splash.resizer.url" value=""/>
 		<java
       classname="org.apache.tools.ant.launch.Launcher"
       classpathref="splash.classpath"
@@ -132,7 +180,7 @@
     >
 			<arg value="-buildfile"/>
 			<arg value="${dita.plugin.fox.jason.splash.dir}/run-splash.xml"/>
-			<arg value="-Dsplash.image=${splash.image.url}"/>
+			<arg value="-Dsplash.image=${splash.resizer.url}${splash.image.url}"/>
 			<arg value="-Dsplash.title=${splash.title}"/>
 			<arg value="-Dsplash.duration=20000"/>
 		</java>
@@ -141,68 +189,50 @@
 	<!--
 		Extracts the image URL from thisanimedoesnotexist.
 	-->
-	<target name="anime.init">
+	<target 
+		name="anime.init"
+		description="Requesting image from thisanimedoesnotexist.ai.">
 		<splash:anime-select/>
 		<property name="splash.title" value="This Anime does not exist"/>
 		<property name="splash.exists" value="true"/>
 		<property name="splash.image.url" value="https://thisanimedoesnotexist.ai/results/psi-${anime.psi}/seed3${anime.seed}.png"/>
-		<dita-ot-echo id="XKCD001I">
-			<param name="1" value="Requesting image from this anime does not exist."/>
-		</dita-ot-echo>
 		<echo level="verbose" message="Anime image URL: ${splash.image.url}"/>
 	</target>
 
 	<!--
 		Fixed URL from Lorem Picsum
 	-->
-	<target name="picsum.init">
+	<target name="picsum.init"
+		description="Requesting image from Lorem Picsum.">
 		<property name="splash.exists" value="true"/>
 		<property name="splash.title" value="Lorem Picsum Image"/>
 		<property name="splash.image.url" value="https://picsum.photos/600/400"/>
-		<dita-ot-echo id="XKCD001I">
-			<param name="1" value="Requesting image from Lorem Picsum."/>
-		</dita-ot-echo>
 		<echo level="verbose" message="https://picsum.photos/600/400"/>
 	</target>
 
-	<!--target name="person.parse">
-		<property name="splash.exists" value="true"/>
-		<property name="splash.title" value="This Person does not exist"/>
-		<property name="splash.image.url" value="https://thispersondoesnotexist.com/image"/>
-		<echo level="verbose" message="person image URL: ${splash.image.url}"/>
-	</target>
-
-	<target name="cats.parse">
-		<property name="splash.exists" value="true"/>
-		<property name="splash.title" value="This Cat does not exist"/>
-		<property name="splash.image.url" value="https://thiscatdoesnotexist.com"/>
-		<echo level="verbose" message="cat image URL: ${splash.image.url}"/>
-	</target-->
 
 	<!--
-		Targets to be used when chaining the splash plugin from other plug-ins.
+		Targets to be used when chaining the splash plugin from DITA-OT.
 	-->
 	<target depends="splash.init,xkcd.init,xkcd.parse,splash" name="xkcd.splash"/>
-	<target depends="splash.init,catsapi.init,catsapi.parse,splash" name="catsapi.splash"/>
+	<target depends="splash.init,cats.init,cats.parse,splash" name="cats.splash"/>
+	<target depends="splash.init,dogs.init,dogs.parse,splash" name="dogs.splash"/>
 	<target depends="splash.init,anime.init,splash" name="anime.splash"/>
 	<target depends="splash.init,picsum.init,splash" name="picsum.splash"/>
 
 
-	<target 
-		name="random.splash"
-		description="Generating Splash Screen">
-		<dita-ot-echo id="XKCD001I">
+	<target name="random.splash">
+		<property file="${dita.plugin.fox.jason.splash.dir}/cfg/configuration.properties"/>
+		<dita-ot-echo id="SPLSH01I" unless:set="splash.source">
 			<param name="1" value="Requesting a random image."/>
 		</dita-ot-echo>
-		<splash:random-select/>
-		<antcall target="${random.select}"/>
+		<splash:random-select unless:set="splash.source"/>
+		<antcall target="${splash.source}.splash"/>
 	</target>
 
-	<!--
+		<!--
 		Main targets executed if you directly call this plugin from Ant or Java
 	-->
-	<target depends="xkcd.splash" name="dita2xkcd"/>
-	<target depends="catsapi.splash" name="dita2cats"/>
-	<target depends="anime.splash" name="dita2anime"/>
-	<target depends="picsum.splash" name="dita2picsum"/>
+	<target depends="random.splash" name="dita2splash"/>
+
 </project>

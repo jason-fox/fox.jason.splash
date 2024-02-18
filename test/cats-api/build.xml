@@ -2,10 +2,10 @@
 <project basedir="." default="unit-test">
 	<import file="../bootstrap.xml"/>
 	<description>
-		Expect that the cats transtype invokes a cat splash screen
+		Expect that the cats source invokes a cat splash screen
 	</description>
 	<target name="unit-test">
-		<exec-transtype transtype="cats"/>
+		<exec-transtype transtype="splash"/>
 		<contains-text expected="Requesting image from the Cats API."/>
 	</target>
 </project>

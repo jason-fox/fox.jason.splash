@@ -5,45 +5,26 @@
   See the accompanying LICENSE file for applicable licenses.
 -->
 <plugin id="fox.jason.splash" version="3.0.0">
-	<!-- Create transtypes for direct invocation -->
-	<transtype
-    abstract="false"
-    desc="Display a random xkcd comic as a splash screen"
-    name="xkcd"
-  />
-	<transtype
-    abstract="false"
-    desc="Display a random cat picture as a splash screen"
-    name="cats"
-  />
-  <transtype
-    abstract="false"
-    desc="Display a random anime picture as a splash screen"
-    name="anime"
-  />
-  <transtype
-    abstract="false"
-    desc="Display a random placeholder picture as a splash screen"
-    name="picsum"
-  />
 
-	<!-- 
-		Ensure that only Cats, Anime Characters, placeholder images or
-		 XKCD comic strips are displayed whenever a
-		transform is invoked - uncomment the lines as necessary.
-	-->
+	<param name="splash.source" desc="Which image source to use" type="enum">
+    <val>cats</val>
+    <val>dogs</val>
+    <val>xkcd</val>
+    <val>anime</val>
+    <val>picsum</val>
+  </param>
 	<feature extension="depend.preprocess.pre" value="random.splash"/>
-<!--
-	<feature extension="depend.preprocess.pre" value="picsum.splash"/>
-	<feature extension="depend.preprocess.pre" value="anime.splash"/>
-	<feature extension="depend.preprocess.pre" value="xkcd.splash"/>
-	<feature extension="depend.preprocess.pre" value="catsapi.splash"/>
--->
 
 	<!-- Import the overrides transform's ANT file -->
-	<feature extension="dita.conductor.lib.import" file="lib/splash-2.0.jar"/>
+	<feature extension="dita.conductor.lib.import" file="lib/splash-2.1.jar"/>
 	<feature extension="ant.import" file="build_dita2splash.xml"/>
 	<!-- Ensure the plugin's error and logging messages are available -->
 	<feature extension="dita.xsl.messages" file="resource/messages.xml"/>
+
+	<transtype
+    abstract="false"
+    desc="Display a splash screen"
+    name="splash"
+  />
 
 </plugin>

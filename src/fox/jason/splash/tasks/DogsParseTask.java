@@ -8,16 +8,16 @@ package fox.jason.splash.tasks;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 
-//   This function extracts the image URL and attribution from the Cat API
+//   This function extracts the image URL and attribution from the Dog API
 //   response. The parsing has been done using simple string manipulation instead
 //   of loading the data as XML.
 
-public class CatsParseTask extends Task {
+public class DogsParseTask extends Task {
 
   /**
-   * Creates a new <code>CatsParseTask</code> instance.
+   * Creates a new <code>DogsParseTask</code> instance.
    */
-  public CatsParseTask() {
+  public DogsParseTask() {
     super();
   }
 
@@ -28,8 +28,8 @@ public class CatsParseTask extends Task {
    */
   @Override
   public void execute() {
-    String input = getProject().getProperty("cats.info");
-    int posImgUrl = input.indexOf("\"url\":");
+    String input = getProject().getProperty("dogs.info");
+     int posImgUrl = input.indexOf("\"url\":");
     int lenImgUrl = input.indexOf('"', posImgUrl + 8);
 
     getProject()
@@ -40,7 +40,7 @@ public class CatsParseTask extends Task {
     getProject()
       .setProperty(
         "splash.title",
-        "Picture from the Cats API"
+        "Picture from the Dogs API"
       );
   }
 }

@@ -11,6 +11,11 @@
     name="cats-parse"
     onerror="ignore"
   />
+  <taskdef
+    classname="fox.jason.splash.tasks.DogsParseTask"
+    name="dogs-parse"
+    onerror="ignore"
+  />
 	<taskdef
     classname="fox.jason.splash.tasks.XkcdParseTask"
     name="xkcd-parse"
